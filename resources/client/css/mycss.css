@@ -1,5 +1,5 @@
 logo {
-    background-image: image("logo.jpg");
+    background-image: image("../logo.jpg");
     float: right;
 }
 body {

@@ -81,5 +81,18 @@ public class User {
             return false;
         }
     }
+    @POST
+    @Path("createAccount")
+    public String accountCreation(@FormDataParam("username") String username, @FormDataParam("password1") String password, @FormDataParam("email") String email){
+        System.out.println("Invoked createAccount() on path user/createAccount");
+        try{
+            PreparedStatement ps2 = Main.db.prepareStatement("INSERT Users (Username, Email, Teacher, Password, Token, Confirmed) VALUE (?, ?, False, ?, ?, False)");
+            return "test over";
+
+        } catch (Exception exception) {
+            System.out.println("Database error" + exception.getMessage());
+            return "{\"Error\": \"Server side error!\"}";
+        }
+    }
 }
 
