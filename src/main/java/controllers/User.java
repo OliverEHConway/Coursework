@@ -19,7 +19,7 @@ public class User {
     @GET
     @Path("list")
     public String userList() {
-        System.out.println("Invoked Food.foodList()");
+        System.out.println("Invoked userList()");
         JSONArray response = new JSONArray();
         try {
             PreparedStatement ps = Main.db.prepareStatement("SELECT * FROM Users");
@@ -86,9 +86,33 @@ public class User {
     public String accountCreation(@FormDataParam("username") String username, @FormDataParam("password1") String password, @FormDataParam("email") String email){
         System.out.println("Invoked createAccount() on path user/createAccount");
         try{
-            PreparedStatement ps2 = Main.db.prepareStatement("INSERT Users (Username, Email, Teacher, Password, Token, Confirmed) VALUE (?, ?, False, ?, ?, False)");
-            return "test over";
+            PreparedStatement ps2 = Main.db.prepareStatement("INSERT INTO Users (Username, Email, Teacher, Password, Token, Confirmed) VALUES (?, ?, ?, ?, ?, ?)");
+            String token = UUID.randomUUID().toString();
+            ps2.setString(1, username);
+            ps2.setString(2, password);
+            ps2.setBoolean(3,false);
+            ps2.setString(4,password);
+            ps2.setString(5,token);
+            ps2.setBoolean(6, false);
+            ps2.executeUpdate();
+            return "userMade";
 
+        } catch (Exception exception) {
+            System.out.println("Database error" + exception.getMessage());
+            return "{\"Error\": \"Server side error!\"}";
+        }
+    }
+    @GET
+    @Path("info")
+    public String userInfo(String token){
+        System.out.println("Invoked userInfo");
+        JSONArray response = new JSONArray();
+        try {
+            PreparedStatement ps = Main.db.prepareStatement("SELECT Username FROM Users WHERE Token = ?");
+            ps.setString(1,token);
+            ResultSet qresult  = ps.executeQuery();
+            String username = qresult.getString(token);
+            return username;
         } catch (Exception exception) {
             System.out.println("Database error" + exception.getMessage());
             return "{\"Error\": \"Server side error!\"}";

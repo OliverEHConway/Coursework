@@ -1,5 +1,5 @@
 logo {
-    background-image: image("../logo.jpg");
+    background-image: image("client/img/logo.jpg");
     float: right;
 }
 body {
@@ -11,6 +11,7 @@ body {
 }
 /* Style the links inside the navigation bar */
 .topnav a {
+    font-family: Arial sans-serif;
     float: left;
     color: white;
     text-align: center;

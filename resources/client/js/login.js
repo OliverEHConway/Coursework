@@ -3,7 +3,6 @@ function postUserLogin() {
 
     var url = "/user/login";
     var formData = new FormData(document.getElementById('loginForm'));
-
     fetch(url, {
         method: "POST",
         body: formData,
@@ -13,9 +12,9 @@ function postUserLogin() {
         if (response.hasOwnProperty("Error")) {
         alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
     } else {
-        Cookies.set("token", response.token);
-        Cookies.set("username", response.username);
-        window.open("Home.html", "_self");       //open index.html in same tab
+        setCookie("token", response.token , 1);
+        setCookie("username", response.username , 1);
+        window.open("Home.html", "_self");       //open Home.html in same tab
     }
 });
 }
