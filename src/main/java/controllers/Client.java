@@ -19,9 +19,7 @@ public class Client {
     @GET
     @Path("img/{path}")
     @Produces({"image/jpeg,image/png"})
-    public byte[] getImageFile(@PathParam("path") String path) {
-        return getFile("client/img/" + path);
-    }
+    public byte[] getImageFile(@PathParam("path") String path) { return getFile("client/img/" + path); }
 
     @GET
     @Path("js/{path}")

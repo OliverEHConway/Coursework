@@ -3,17 +3,26 @@
 <head>
     <link rel="stylesheet" href="css/mycss.css">
     <meta charset="UTF-8">
-    <title>Homepage</title>
+    <title>Qwerty Quiz Homepage</title>
     <script src="js\loggedIn.js"></script>
     <script src="js\getCookie.js"></script>
+    <link rel="icon" href="img\logo2.png" />
 </head>
 <body>
 <div class="topnav">
     <a class="active" href="Home.html">Home</a>
     <a href="Subjects.html">Subjects</a>
     <a href="login.html" id="login">Login</a>
-    <script>loggedIn();</script>
-    <logo><a href="about.html"></a></logo>
+    <script>loggedIn('login');</script>
+    <logo><a href="about.html"><img src="img\logo2.png" alt="logo image" width="25" height="25"></a></logo>
 </div>
+<br>
+<br>
+<br>
+<page>
+    <h1>Welcome to Qwerty Quiz</h1>
+    <p id="name"></p>
+    <script>loggedIn('name')</script>
+</page>
 </body>
 </html>

@@ -1,10 +1,7 @@
-function loggedIn() {
+function loggedIn(Id) {
     console.log("Invoked loggedIn() ");
     var username = getCookie("username");
     if (username != ""){
-        document.getElementById('login').innerHTML = username;
-    } else{
-        document.getElementById('login').innerHTML = "Login";
+        document.getElementById(Id).innerHTML = username;
     }
-
 }

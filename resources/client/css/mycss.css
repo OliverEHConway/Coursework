@@ -1,17 +1,17 @@
 logo {
-    background-image: image("client/img/logo.jpg");
     float: right;
 }
 body {
     background-image: linear-gradient(to bottom right, #2B69E0, #81B6FC);
     background-repeat: no-repeat;
+    background-color: white;
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
 }
 /* Style the links inside the navigation bar */
 .topnav a {
-    font-family: Arial sans-serif;
+    font-family: sans-serif, Arial;
     float: left;
     color: white;
     text-align: center;
@@ -29,6 +29,7 @@ body {
 
 /* Add a color to the active/current link */
 .topnav a.active {
+    font-family: sans-serif, Arial;
     background-color: #001531;
     color: white;
     transition-duration: 0.5s;
@@ -102,4 +103,17 @@ input:hover{
 }
 input::placeholder{
     font-family: sans-serif, Arial;
+}
+page{
+    background-repeat: no-repeat;
+    font-family: sans-serif, Arial;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: white;
+    display:block;
+    margin: auto;
+    text-align: left;
+    padding: 10px;
+    top: 50%;
+    left:50%;
 }
