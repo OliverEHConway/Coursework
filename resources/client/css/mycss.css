@@ -2,6 +2,7 @@ logo {
     float: right;
 }
 body {
+    font-family: sans-serif, Arial;
     background-image: linear-gradient(to bottom right, #2B69E0, #81B6FC);
     background-repeat: no-repeat;
     background-color: white;

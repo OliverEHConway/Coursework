@@ -19,8 +19,8 @@ import java.sql.ResultSet;
 public class Questions {
     @GET
     @Path("list")
-    public String userList() {
-        System.out.println("Invoked Food.foodList()");
+    public String questionList() {
+        System.out.println("Invoked question.questionList()");
         JSONArray response = new JSONArray();
         try {
             PreparedStatement ps = Main.db.prepareStatement("SELECT * FROM Questions");
@@ -35,6 +35,23 @@ public class Questions {
             }
             return response.toString();
         } catch (Exception exception) {
+            System.out.println("Database error: " + exception.getMessage());
+            return "{\"Error\": \"Unable to list items.  Error code 1.\"}";
+        }
+    }
+    @GET
+    @Path("getQ")
+    public String getQ() {
+        System.out.println("Invoked question.questiongetQ()");
+        JSONArray response = new JSONArray();
+        try {
+            PreparedStatement ps = Main.db.prepareStatement("SELECT * FROM Questions WHERE QuestionID == ?");
+            ResultSet results = ps.executeQuery();
+            JSONObject row = new JSONObject();
+            row.put("Question", results.getString(1));
+            row.put("Answer", results.getString(2));
+            return results.toString();
+        } catch (Exception exception){
             System.out.println("Database error: " + exception.getMessage());
             return "{\"Error\": \"Unable to list items.  Error code 1.\"}";
         }
